@@ -23,3 +23,8 @@ Route::get('hola' , function(){
    echo "Hola le dijo la araña a la mosca";
 });
 
+
+Route::get('prueba' , function(){
+       return view('productos.create');
+});
+
