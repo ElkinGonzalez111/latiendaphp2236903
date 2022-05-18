@@ -11,6 +11,15 @@
      class="col s12">
 
      @csrf
+     @if(session('mensaje'))
+     <div class="row">
+       <div class="col s8">
+         <span class="purple-text text-darken-2">
+           {{ session('mensaje') }}
+         </span>
+       </div>
+     </div>
+     @endif
       <div class="row">
         <div class="input-field col s8">
           <input placeholder="Nombre de Producto"
@@ -19,6 +28,7 @@
            class="validate"
            name="nombre">
           <label for="nombre">Nombre de Producto</label>
+          <span class="red-text text-darken-1">{{ $errors->first('nombre') }}</span>
         </div>
       </div>
 
@@ -30,6 +40,7 @@
           >
           </textarea>
           <label for="desc">Descripcion</label>
+          <span class="red-text text-darken-1">{{ $errors->first('desc') }}</span>
         </div>
       </div>
 
@@ -40,6 +51,7 @@
           type="text"
           class="validate">
           <label for="precio">Precio</label>
+          <span class="red-text text-darken-1">{{ $errors->first('precio') }}</span>
         </div>
       </div>
 
@@ -66,6 +78,7 @@
             @endforeach
             </select>
             <label>Categorias Disponibles</label>
+            <span class="red-text text-darken-1">{{ $errors->first('categorias') }}</span>
           </div>
         </div>
 
@@ -80,6 +93,7 @@
             @endforeach
             </select>
             <label>Marca Disponibles</label>
+            <span class="red-text text-darken-1">{{ $errors->first('marca') }}</span>
           </div>
         </div>
 

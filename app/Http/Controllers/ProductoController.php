@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductoRequest;
 use App\Models\Marca;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProductoController extends Controller
@@ -43,20 +44,35 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductoRequest $request)
     {
         
-        var_dump($request->all());
+        
+            //validacion exitosa
+            $p = new producto();
+            $p->nombre=$request->nombre;
+            $p->desc=$request->desc;
+            $p->precio=$request->precio;
+            $p->marca_id=$request->marca;
+            $p->categoria_id=$request->categorias;
+            $p->save();
+            //redireccionar: a una ruta disponible
+            return redirect('productos/create')
+                ->with('mensaje' , "producto registrado exitosamente");
+    }
+        
         //crear una entidad <<producto>>
-        $p = new producto();
+        /*$p = new producto();
         $p->nombre=$request->nombre;
         $p->desc=$request->desc;
         $p->precio=$request->precio;
         $p->marca_id=$request->marca;
         $p->categoria_id=$request->categorias;
         $p->save();
-        echo"producto registro";
-    }
+        //redireccionar: a una ruta disponible
+        return redirect('productos/create')
+            ->with('mensaje' , "producto registrado exitosamente");*/
+
 
     /**
      * Display the specified resource.
