@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<nav class="#616161 grey darken-2">
+<nav class="#ffa726 orange lighten-1">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Latienda</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -23,8 +23,11 @@
    <script src="{{  asset('materialize/js/materialize.js') }}"></script>
    <script>
      document.addEventListener('DOMContentLoaded', function() {
+       //codigo de inicializacion de los tabs
      var elems = document.querySelectorAll('select');
      var instances = M.FormSelect.init(elems, []);
+     let tabs = document.querySelector(".tabs")
+     var instance = m.Tabs.init(tabs);
   });
 
    </script>
