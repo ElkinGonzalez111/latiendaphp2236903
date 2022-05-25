@@ -8,8 +8,8 @@
 <div class="row">
     <form method="POST"
      action="{{ url('productos') }}"
-     class="col s12">
-
+     class="col s12" 
+     enctype="multipart/form-data">
      @csrf
      @if(session('mensaje'))
      <div class="row">
@@ -64,6 +64,7 @@
           <div class="file-path-wrapper">
             <input class="file-path validate" type="text">
           </div>
+          <span class="red-text text-darken-1">{{ $errors->first('imagen')}}</span>
         </div>
       </div>
 
