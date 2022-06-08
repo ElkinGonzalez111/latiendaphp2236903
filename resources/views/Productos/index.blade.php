@@ -5,6 +5,15 @@
       <h1> Catalogo de Productos </h1>
     
     </div> 
+    @if(session('mensajito'))
+    <div class = "row">
+      <p>{{ session('mensajito') }} 
+        <a href="{{ route('cart.index }}">
+          Ir al carrito
+        </a>
+      </p>
+    </div>
+    @endif
     @foreach($productos as $producto)
 
 
@@ -17,12 +26,13 @@
         </div>
         <div class="card-content">
           <ul>
-              <li> Descripcion:{{ $producto->desc }}</li>
-              <li> Precio: {{ $producto->precio }}</li>
+              <li>  Nombre:{{ $producto->nombre }}</li>
+              <li>  Descripcion:{{ $producto->desc }}</li>
+              <li>  Precio: {{ $producto->precio }}</li>
           </ul>
         </div>
         <div class="card-action">
-          <a href="" target="_blank">Ver detalles</a>
+          <a href="{{ route('productos.show' , $producto ->id)}}" target="_blank">Ver detalles</a>
         </div>
       </div>
     </div>
