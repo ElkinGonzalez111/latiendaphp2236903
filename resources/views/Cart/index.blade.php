@@ -4,19 +4,27 @@
 <div class="row">
     <h1>Carrito  de compras</h1>
 </div>
+@if(!session('cart'))
 <div class="row">
+    <p>No hay items en el carrito</p>
+</div>
+@else
+    <div class="row">
     <div class="col s12">
         <table>
             <thead>
                 <tr>
                     <th>Producto</th>
                     <th>Cantidad</th>
+                    <th>Precio</th>
                 </tr>
             </thead>
             <tbody>
             @foreach(session('cart') as $index => $prod)
             <tr>
-                <td>{{ var_dump($prod)]  }}</td>
+                <td>{{$prod[0]['nombre_prod'] }}</td>
+                <td>{{$prod[0]['cantidad'] }}</td>
+                <td>{{$prod[0]['precio_prod'] }}</td>
             </tr>
             @endforeach
             </tbody>
@@ -25,13 +33,14 @@
 </div>
 
 <div class="row">
-    <form action="{{route('cart.destroy', 1)}}" method="POST">
+    <form action="{{route('cart.destroy',1)}}" method="POST">
         @method('DELETE')
-        @crsf
-        <button type="submit">
-            Vaciar Carrito 
+        @csrf
+        <button class="btn waves-effect waves-light" type="submit">
+        Vaciar Carrito 
         </button>
     </form>
 </div>
+@endif
 
 @endsection

@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div class="row">
-    <h1>{{ $producto->nombre}}</h1>
+    <h1>{{ $producto->nombre }}</h1>
 </div>
 <div class="row">
     <div class="col s8">
@@ -26,8 +26,10 @@
             <div class="row">
                 <h3>Añadir al carrito</h3>
             </div>
-            <input type="hidden" name="pro_id" id="{{ $producto -> id }}">
+            <input type="hidden" name="prod_id" value="{{ $producto -> id }}">
+            <input type="hidden" name="precio" value="{{ $producto -> precio }}">
             <div class="row">
+                <div class ="col s4 input-field">
                <select name="cantidad" id="cantidad">
                 <option value="1">1</option>
                 <option value="1">2</option>
@@ -37,6 +39,7 @@
             </div>
           </div>
           <div class ="row">
+            <div class ="col s4 input-field">
               <button class="btn waves-effect waves-light" type="submit">
                   Añadir
               </button>
